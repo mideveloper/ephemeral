@@ -69,6 +69,18 @@ describe("Cache", function() {
         });
     });
 
+    it("removeAllLocalCache", function() {
+        return local_cacheObj.set("local-abc", "local-bcd").then(function() {
+            return local_cacheObj.set("local-efg", "local-hij").then(function () {
+                return local_cacheObj.removeAll(["local-abc", "local-efg"]).then(function() {
+                    return local_cacheObj.getBatch(["local-abc", "local-efg"]).then(function (vals) {
+                        assert.ok(vals, {});
+                    });
+                });
+            });
+        });
+    });
+
     it("setAndGetMemCache", function() {
         return memcache_Obj.set("mem-abc", "mem-bcd").then(function() {
             return memcache_Obj.get("mem-abc").then(function (val) {
@@ -109,6 +121,18 @@ describe("Cache", function() {
         });
     });
 
+    it("removeAllMemCache", function() {
+        return memcache_Obj.set("mem-abc", "mem-bcd").then(function() {
+            return memcache_Obj.set("mem-efg", "mem-hij").then(function () {
+                return memcache_Obj.removeAll(["mem-abc", "mem-efg"]).then(function() {
+                    return memcache_Obj.getBatch(["mem-abc", "mem-efg"]).then(function (vals) {
+                        assert.ok(vals, {});
+                    });
+                });
+            });
+        });
+    });
+
     it("setAndGetRedisCache", function() {
         return rediscache_Obj.set("Redis-abc", "Redis-bcd").then(function() {
             return rediscache_Obj.get("Redis-abc").then(function (val) {
@@ -141,6 +165,18 @@ describe("Cache", function() {
         return rediscache_Obj.set("Redis-abc", "Redis-bcd").then(function() {
             return rediscache_Obj.set("Redis-efg", "Redis-hij").then(function () {
                 return rediscache_Obj.removeBatch(["Redis-abc", "Redis-efg"]).then(function() {
+                    return rediscache_Obj.getBatch(["Redis-abc", "Redis-efg"]).then(function (vals) {
+                        assert.ok(vals, {});
+                    });
+                });
+            });
+        });
+    });
+
+    it("removeAllRedisCache", function() {
+        return rediscache_Obj.set("Redis-abc", "Redis-bcd").then(function() {
+            return rediscache_Obj.set("Redis-efg", "Redis-hij").then(function () {
+                return rediscache_Obj.removeAll(["Redis-abc", "Redis-efg"]).then(function() {
                     return rediscache_Obj.getBatch(["Redis-abc", "Redis-efg"]).then(function (vals) {
                         assert.ok(vals, {});
                     });

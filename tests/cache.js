@@ -108,7 +108,7 @@ describe("Cache", function() {
         return memcache_Obj.set("mem-abc", "mem-bcd").then(function() {
             return memcache_Obj.set("mem-efg", "mem-hij").then(function () {
                 return memcache_Obj.getBatch(["mem-abc", "mem-efg"]).then(function (vals) {
-                    assert.ok(vals, {"mem-abc": 'mem-bcd', "mem-efg": 'mem-hij'});
+                    assert.ok(vals, {"mem-abc": "mem-bcd", "mem-efg": "mem-hij"});
                     done();
                 });
             });
@@ -165,7 +165,7 @@ describe("Cache", function() {
         return rediscache_Obj.set("Redis-abc", "Redis-bcd").then(function() {
             return rediscache_Obj.set("Redis-efg", "Redis-hij").then(function () {
                 return rediscache_Obj.getBatch(["Redis-abc", "Redis-efg"]).then(function (vals) {
-                    assert.ok(vals, {"Redis-abc": 'Redis-bcd', "Redis-efg": 'Redis-hij'});
+                    assert.ok(vals, {"Redis-abc": "Redis-bcd", "Redis-efg": "Redis-hij"});
                     done();
                 });
             });

@@ -1,17 +1,17 @@
 {
   "name": "ephemeral",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "oyster",
   "main": "./lib/index.js",
   "scripts": {
     "test": "grunt test"
   },
   "dependencies": {
-    "bluebird": "~2.9.33",
-    "lodash": "~3.10.1",
-    "mongodb": "~2.0.36",
-    "redis": "~0.12.1",
-    "memcached": "~2.1.0"
+    "bluebird": "~3.2.1",
+    "lodash": "~4.2.0",
+    "mongodb": "~2.1.4",
+    "redis": "~2.4.2",
+    "memcached": "~2.2.1"
   },
   "devDependencies": {
     "grunt-cli": "~0.1.11",
